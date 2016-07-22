@@ -9,7 +9,7 @@
     <aem-library:title/>
     <cq:include script="headlibs.jsp"/>
     <cq:include script="/libs/wcm/core/components/init/init.jsp"/>
-    <cq:includeClientLib css="conduit.app"/>
+    <cq:includeClientLib css="circuit.sling.models.demo"/>
     <cq:include script="css_includes.jsp"/>
 
     <c:if test="${isAuthor}">

@@ -3,6 +3,6 @@
 <body>
     <cq:include script="main.jsp"/>
 
-    <cq:includeClientLib js="circuit.sling.models.main"/>
+    <cq:includeClientLib js="circuit.sling.models.demo"/>
     <cq:include script="javascript_includes.jsp"/>
 </body>

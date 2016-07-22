@@ -7,14 +7,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${topNavigation.brandLink.href}">${topNavigation.brandLink.title}</a>
+            <a class="navbar-brand" href="${topNavigation.brandPage.path}.html">${topNavigation.brandPage.title}</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
             <ul class="nav navbar-nav" data-sly-list.link="${topNavigation.links}">
                 <li class="${link.active ? 'dropdown active' : 'dropdown'}">
-                    <a href="${link.href}" class="dropdown-toggle" role="button" aria-expanded="false">${link.title} <span class="caret" data-sly-test="${link.children}"></span></a>
-                    <ul class="dropdown-menu" role="menu" data-sly-list.child="${link.children}">
-                        <li><a href="${child.href}">${child.title}</a></li>
+                    <a href="${link.path}.html" class="dropdown-toggle" role="button" aria-expanded="false">${link.title} <span class="caret" data-sly-test="${link.links}"></span></a>
+                    <ul class="dropdown-menu" role="menu" data-sly-list.child="${link.links}">
+                        <li><a href="${child.path}.html">${child.title}</a></li>
                     </ul>
                 </li>
             </ul>

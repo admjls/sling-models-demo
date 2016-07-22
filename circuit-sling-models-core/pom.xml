@@ -58,6 +58,35 @@
         </plugins>
     </build>
 
+    <profiles>
+        <!-- activate this profile to enable logging of test executions -->
+        <profile>
+            <id>test-logging</id>
+            <activation>
+                <property>
+                    <name>test-logging</name>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                    <version>1.7.5</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.icfolson.aem.prosper</groupId>
+                    <artifactId>prosper</artifactId>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-nop</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -195,6 +224,19 @@
         <dependency>
             <groupId>com.citytechinc.aem</groupId>
             <artifactId>multicomposite-addon</artifactId>
+        </dependency>
+
+        <!-- test -->
+        <dependency>
+            <groupId>com.icfolson.aem.library</groupId>
+            <artifactId>aem-library-models</artifactId>
+            <classifier>tests</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.icfolson.aem.prosper</groupId>
+            <artifactId>prosper</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

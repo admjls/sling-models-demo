@@ -3,10 +3,10 @@
           xmlns:cq="http://www.day.com/jcr/cq/1.0"
           xmlns:jcr="http://www.jcp.org/jcr/1.0"
           jcr:primaryType="cq:Template"
-          jcr:title="CIRCUIT Sling Models Demo - Empty Page Template"
+          jcr:title="Sling Models Demo Page"
           allowedPaths="/content(/.*)?"
           ranking="0">
     <jcr:content
             jcr:primaryType="cq:PageContent"
-            sling:resourceType="circuit-sling-models/components/page/empty" />
+            sling:resourceType="circuit-sling-models/components/page/demo" />
 </jcr:root>

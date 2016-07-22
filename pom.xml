@@ -108,6 +108,12 @@
             </dependency>
             <dependency>
                 <groupId>com.icfolson.aem.library</groupId>
+                <artifactId>aem-library-models</artifactId>
+                <version>${aem.library.version}</version>
+                <classifier>tests</classifier>
+            </dependency>
+            <dependency>
+                <groupId>com.icfolson.aem.library</groupId>
                 <artifactId>aem-library-ui</artifactId>
                 <version>${aem.library.version}</version>
                 <type>zip</type>

@@ -1,33 +1,32 @@
 package com.icfolson.aem.circuit.models.components.content
 
-import com.icfolson.aem.circuit.models.annotations.CircuitDemoComponent
-import com.icfolson.aem.library.api.link.NavigationLink
-import com.icfolson.aem.library.api.page.PageDecorator
+import com.citytechinc.cq.component.annotations.Component
+import com.day.cq.wcm.api.Page
 import com.icfolson.aem.library.core.constants.ComponentConstants
+import org.apache.sling.api.resource.Resource
+import org.apache.sling.models.annotations.Model
 
 import javax.inject.Inject
 
-@CircuitDemoComponent(value = "Breadcrumb", group = ComponentConstants.GROUP_HIDDEN, noDecoration = true)
+@Component(value = "Breadcrumb", group = ComponentConstants.GROUP_HIDDEN, noDecoration = true)
+@Model(adaptables = Resource)
 class Breadcrumb {
 
     @Inject
-    PageDecorator currentPage
+    Page currentPage
 
-    List<NavigationLink> getLinks() {
-        def links = []
+    List<Page> getPages() {
+        def pages = []
 
         def rootPage = currentPage.getAbsoluteParent(1)
+        def page = currentPage
 
-        if (rootPage) {
-            def page = currentPage
+        while (page && page.depth >= rootPage.depth) {
+            pages.add(page)
 
-            while (page && page.depth >= rootPage.depth) {
-                links.add(page.getNavigationLink(currentPage.path == page.path))
-
-                page = page.parent
-            }
+            page = page.parent
         }
 
-        links.reverse()
+        pages.reverse()
     }
 }
