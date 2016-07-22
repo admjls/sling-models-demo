@@ -1,0 +1,7 @@
+#base=js
+
+jquery.js
+bootstrap.js
+lodash.js
+arg.js
+js.cookie-2.1.0.min.js

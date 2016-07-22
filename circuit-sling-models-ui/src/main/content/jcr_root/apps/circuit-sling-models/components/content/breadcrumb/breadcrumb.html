@@ -1,0 +1,4 @@
+<ol class="breadcrumb" data-sly-use.breadcrumb="com.icfolson.aem.circuit.models.components.content.Breadcrumb" data-sly-list.link="${breadcrumb.links}">
+    <li data-sly-test.active="${link.active}" class="active">${link.title}</li>
+    <li data-sly-test="${!active}"><a href="${link.href}">${link.title}</a></li>
+</ol>

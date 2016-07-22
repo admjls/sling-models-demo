@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation" data-sly-use.topNavigation="com.icfolson.aem.circuit.models.components.content.TopNavigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="${topNavigation.brandLink.href}">${topNavigation.brandLink.title}</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+            <ul class="nav navbar-nav" data-sly-list.link="${topNavigation.links}">
+                <li class="${link.active ? 'dropdown active' : 'dropdown'}">
+                    <a href="${link.href}" class="dropdown-toggle" role="button" aria-expanded="false">${link.title} <span class="caret" data-sly-test="${link.children}"></span></a>
+                    <ul class="dropdown-menu" role="menu" data-sly-list.child="${link.children}">
+                        <li><a href="${child.href}">${child.title}</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form navbar-right" role="search" action="${topNavigation.searchPagePath}">
+                <div class="form-group">
+                    <input type="text" name="query" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
