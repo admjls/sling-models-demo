@@ -17,6 +17,7 @@ class Footer {
     @DialogField(fieldLabel = "Copyright", required = true)
     @TextField
     @Inject
+    // @Inherit
     @Optional
     String copyright
 

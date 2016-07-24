@@ -29,7 +29,7 @@ class TopNavigation {
     Page getBrandPage() {
         currentPage.getAbsoluteParent(1)
     }
-    
+
     List<TopNavigationLink> getLinks() {
         buildLinks(currentPage.getAbsoluteParent(1))
     }
