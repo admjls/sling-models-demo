@@ -4,6 +4,8 @@ import com.icfolson.aem.circuit.models.enums.AudienceStatus
 import com.icfolson.aem.circuit.models.injectors.InheritInjector
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
 import com.icfolson.aem.prosper.specs.ProsperSpec
+import org.apache.sling.models.factory.MissingElementsException
+import org.apache.sling.models.factory.ModelFactory
 import spock.lang.Unroll
 
 @Unroll
@@ -34,6 +36,11 @@ class FooterSpec extends ProsperSpec {
                     }
                 }
             }
+            circuit("Circuit") {
+                "jcr:content"() {
+                    footer()
+                }
+            }
         }
     }
 
@@ -56,5 +63,22 @@ class FooterSpec extends ProsperSpec {
         path                                            | copyrightText
         "/content/demo/jcr:content/footer"              | "Copyright Text"
         "/content/demo/sling/models/jcr:content/footer" | "Copyright Text"
+    }
+
+    def "model factory throws exception for missing required field"() {
+        setup:
+        def modelFactory = slingContext.getService(ModelFactory)
+        def resource = getResource("/content/circuit/jcr:content/footer")
+
+        expect:
+        modelFactory.createModel(resource, Footer)
+
+        /*
+        when:
+        modelFactory.createModel(resource, Footer)
+
+        then:
+        thrown(MissingElementsException)
+         */
     }
 }

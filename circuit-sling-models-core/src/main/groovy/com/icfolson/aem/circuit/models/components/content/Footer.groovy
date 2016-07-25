@@ -7,7 +7,6 @@ import com.icfolson.aem.circuit.models.annotations.Inherit
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
-import org.apache.sling.models.annotations.Optional
 
 import javax.inject.Inject
 
@@ -23,7 +22,6 @@ class Footer {
     @DialogField(fieldLabel = "Copyright Text", required = true)
     @TextField
     @Inherit
-    @Optional
     String copyright
 
     String getAudienceStatus() {
