@@ -20,9 +20,8 @@ class Footer {
     @Inject
     private AudienceStatusService audienceStatusService
 
-    @DialogField(fieldLabel = "Copyright", required = true)
+    @DialogField(fieldLabel = "Copyright Text", required = true)
     @TextField
-    // @Inject
     @Inherit
     @Optional
     String copyright
