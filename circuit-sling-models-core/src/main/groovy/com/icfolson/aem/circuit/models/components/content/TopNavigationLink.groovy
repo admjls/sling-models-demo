@@ -10,6 +10,4 @@ class TopNavigationLink {
     String title
 
     boolean active
-
-    List<TopNavigationLink> links = []
 }

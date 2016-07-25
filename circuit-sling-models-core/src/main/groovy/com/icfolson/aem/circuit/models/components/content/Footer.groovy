@@ -5,14 +5,15 @@ import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.widgets.TextField
 import com.icfolson.aem.circuit.models.annotations.Inherit
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
-import com.icfolson.aem.library.core.constants.ComponentConstants
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
 import org.apache.sling.models.annotations.Optional
 
 import javax.inject.Inject
 
-@Component(value = "Footer", group = ComponentConstants.GROUP_HIDDEN)
+import static com.icfolson.aem.library.core.constants.ComponentConstants.GROUP_HIDDEN
+
+@Component(value = "Footer", group = GROUP_HIDDEN)
 @Model(adaptables = Resource)
 class Footer {
 
