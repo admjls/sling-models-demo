@@ -5,6 +5,7 @@ import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.widgets.TextField
 import com.icfolson.aem.circuit.models.annotations.Inherit
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
+import groovy.transform.ToString
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
 
@@ -14,6 +15,7 @@ import static com.icfolson.aem.library.core.constants.ComponentConstants.GROUP_H
 
 @Component(value = "Footer", group = GROUP_HIDDEN)
 @Model(adaptables = Resource)
+@ToString(includePackage = false, includeNames = true)
 class Footer {
 
     @Inject
@@ -22,6 +24,7 @@ class Footer {
     @DialogField(fieldLabel = "Copyright Text", required = true)
     @TextField
     @Inherit
+    // @Inject
     String copyright
 
     String getAudienceStatus() {
