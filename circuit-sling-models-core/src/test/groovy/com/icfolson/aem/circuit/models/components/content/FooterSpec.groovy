@@ -70,15 +70,17 @@ class FooterSpec extends ProsperSpec {
         def modelFactory = slingContext.getService(ModelFactory)
         def resource = getResource("/content/circuit/jcr:content/footer")
 
+        /*
         expect:
         modelFactory.createModel(resource, Footer)
+        */
 
-        /*
         when:
         modelFactory.createModel(resource, Footer)
 
         then:
-        thrown(MissingElementsException)
-         */
+        def e = thrown(MissingElementsException)
+
+        e.missingElements.size() == 1
     }
 }
