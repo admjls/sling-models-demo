@@ -51,7 +51,7 @@ class ComponentInjector implements Injector {
         value
     }
 
-    private def getValueForResource(Class clazz, Object adaptable) {
+    private Object getValueForResource(Class clazz, Object adaptable) {
         def resource = getResource(adaptable)
 
         def value = null

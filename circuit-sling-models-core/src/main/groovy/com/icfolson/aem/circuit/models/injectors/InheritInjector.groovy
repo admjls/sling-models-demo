@@ -2,7 +2,6 @@ package com.icfolson.aem.circuit.models.injectors
 
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap
 import com.icfolson.aem.circuit.models.annotations.Inherit
-import groovy.transform.TupleConstructor
 import groovy.util.logging.Slf4j
 import org.apache.felix.scr.annotations.Component
 import org.apache.felix.scr.annotations.Property
@@ -61,7 +60,6 @@ class InheritInjector implements StaticInjectAnnotationProcessorFactory, Injecto
         annotation ? new InheritAnnotationProcessor() : null
     }
 
-    @TupleConstructor
     private static class InheritAnnotationProcessor extends AbstractInjectAnnotationProcessor2 {
 
     }
