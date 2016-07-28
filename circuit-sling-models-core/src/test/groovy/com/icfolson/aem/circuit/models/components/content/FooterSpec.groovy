@@ -53,7 +53,6 @@ class FooterSpec extends ProsperSpec {
         footer.audienceStatus == AudienceStatus.ASLEEP.displayName
     }
 
-    @Ignore
     def "get copyright text with inheritance"() {
         setup:
         def footer = getResource(path).adaptTo(Footer)

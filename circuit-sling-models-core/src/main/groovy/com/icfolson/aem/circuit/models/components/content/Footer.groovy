@@ -4,6 +4,7 @@ import com.citytechinc.cq.component.annotations.Component
 import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.widgets.TextField
 import com.google.common.base.Objects
+import com.icfolson.aem.circuit.models.annotations.Inherit
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
@@ -22,9 +23,7 @@ class Footer {
 
     @DialogField(fieldLabel = "Copyright Text", required = true)
     @TextField
-    @Inject
-    // @Inherit
-    // @Optional
+    @Inherit
     String copyright
 
     String getAudienceStatus() {
