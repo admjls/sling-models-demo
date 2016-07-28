@@ -1,7 +1,8 @@
 package com.icfolson.aem.circuit.models.servlets
 
-import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.common.net.MediaType
 import com.icfolson.aem.circuit.models.components.content.Footer
+import groovy.json.JsonBuilder
 import org.apache.felix.scr.annotations.sling.SlingServlet
 import org.apache.sling.api.SlingHttpServletRequest
 import org.apache.sling.api.SlingHttpServletResponse
@@ -13,15 +14,13 @@ import javax.servlet.ServletException
     extensions = "json")
 class FooterJsonServlet extends SlingSafeMethodsServlet {
 
-    private static final ObjectMapper MAPPER = new ObjectMapper()
-
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws
         ServletException, IOException {
-        def footer = request.resource.adaptTo(Footer)
+        response.setContentType(MediaType.JSON_UTF_8.withoutParameters().toString())
 
-        response.setContentType("application/json")
+        def footer = request.adaptTo(Footer)
 
-        MAPPER.writeValue(response.outputStream, footer)
+        new JsonBuilder(footer).writeTo(response.writer)
     }
 }

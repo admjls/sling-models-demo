@@ -6,6 +6,7 @@ import com.icfolson.aem.circuit.models.services.AudienceStatusService
 import com.icfolson.aem.prosper.specs.ProsperSpec
 import org.apache.sling.models.factory.MissingElementsException
 import org.apache.sling.models.factory.ModelFactory
+import spock.lang.Ignore
 import spock.lang.Unroll
 
 @Unroll
@@ -52,6 +53,7 @@ class FooterSpec extends ProsperSpec {
         footer.audienceStatus == AudienceStatus.ASLEEP.displayName
     }
 
+    @Ignore
     def "get copyright text with inheritance"() {
         setup:
         def footer = getResource(path).adaptTo(Footer)
@@ -69,11 +71,6 @@ class FooterSpec extends ProsperSpec {
         setup:
         def modelFactory = slingContext.getService(ModelFactory)
         def resource = getResource("/content/circuit/jcr:content/footer")
-
-        /*
-        expect:
-        modelFactory.createModel(resource, Footer)
-        */
 
         when:
         modelFactory.createModel(resource, Footer)
