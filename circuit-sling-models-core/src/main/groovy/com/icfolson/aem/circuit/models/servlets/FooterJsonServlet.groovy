@@ -19,7 +19,7 @@ class FooterJsonServlet extends SlingSafeMethodsServlet {
         ServletException, IOException {
         response.setContentType(MediaType.JSON_UTF_8.withoutParameters().toString())
 
-        def footer = request.adaptTo(Footer)
+        def footer = request.resource.adaptTo(Footer)
 
         new JsonBuilder(footer).writeTo(response.writer)
     }

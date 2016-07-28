@@ -2,7 +2,6 @@ package com.icfolson.aem.circuit.models.injectors
 
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap
 import com.icfolson.aem.circuit.models.annotations.Inherit
-import groovy.util.logging.Slf4j
 import org.apache.felix.scr.annotations.Component
 import org.apache.felix.scr.annotations.Property
 import org.apache.felix.scr.annotations.Service
@@ -21,7 +20,6 @@ import java.lang.reflect.Type
 @Component
 @Service(Injector)
 @Property(name = Constants.SERVICE_RANKING, intValue = 5000)
-@Slf4j("LOG")
 class InheritInjector implements StaticInjectAnnotationProcessorFactory, Injector {
 
     @Override

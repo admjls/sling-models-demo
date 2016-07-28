@@ -5,7 +5,6 @@ import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.widgets.TextField
 import com.google.common.base.Objects
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
-import org.apache.sling.api.SlingHttpServletRequest
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
 
@@ -15,7 +14,7 @@ import java.time.LocalDate
 import static com.icfolson.aem.library.core.constants.ComponentConstants.GROUP_HIDDEN
 
 @Component(value = "Footer", group = GROUP_HIDDEN)
-@Model(adaptables = [Resource, SlingHttpServletRequest])
+@Model(adaptables = Resource)
 class Footer {
 
     @Inject
