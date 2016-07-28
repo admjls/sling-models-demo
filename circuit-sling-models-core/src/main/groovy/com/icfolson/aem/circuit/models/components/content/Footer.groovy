@@ -39,8 +39,8 @@ class Footer {
     String toString() {
         Objects.toStringHelper(this)
             .add("copyright", copyright)
-            .add("audienceStatus", audienceStatus)
             .add("year", year)
+            .add("audienceStatus", audienceStatus)
             .toString()
     }
 }

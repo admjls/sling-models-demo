@@ -10,8 +10,8 @@ import org.apache.sling.api.servlets.SlingSafeMethodsServlet
 
 import javax.servlet.ServletException
 
-@SlingServlet(resourceTypes = "circuit-sling-models/components/content/footer", methods = "GET", selectors = "footer",
-    extensions = "json")
+@SlingServlet(resourceTypes = "circuit-sling-models/components/content/footer", methods = "GET",
+    selectors = "properties", extensions = "json")
 class FooterJsonServlet extends SlingSafeMethodsServlet {
 
     @Override
