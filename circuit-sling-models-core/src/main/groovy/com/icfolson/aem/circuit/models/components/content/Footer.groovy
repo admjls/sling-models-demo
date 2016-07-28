@@ -24,6 +24,7 @@ class Footer {
     @TextField
     @Inject
     // @Inherit
+    // @Optional
     String copyright
 
     String getAudienceStatus() {
