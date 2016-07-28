@@ -3,6 +3,7 @@ package com.icfolson.aem.circuit.models.components.content
 import com.icfolson.aem.circuit.models.enums.AudienceStatus
 import com.icfolson.aem.circuit.models.injectors.InheritInjector
 import com.icfolson.aem.circuit.models.services.AudienceStatusService
+import com.icfolson.aem.prosper.annotations.ModelSpec
 import com.icfolson.aem.prosper.specs.ProsperSpec
 import org.apache.sling.models.factory.MissingElementsException
 import org.apache.sling.models.factory.ModelFactory
@@ -10,6 +11,7 @@ import spock.lang.Ignore
 import spock.lang.Unroll
 
 @Unroll
+@ModelSpec
 class FooterSpec extends ProsperSpec {
 
     def setupSpec() {
@@ -21,8 +23,6 @@ class FooterSpec extends ProsperSpec {
                 AudienceStatus.ASLEEP
             }
         })
-
-        slingContext.addModelsForPackage(this.class.package.name)
 
         pageBuilder.content {
             demo("Demo") {

@@ -1,13 +1,14 @@
 package com.icfolson.aem.circuit.models.components.content
 
 import com.icfolson.aem.circuit.models.injectors.ComponentInjector
+import com.icfolson.aem.prosper.annotations.ModelSpec
 import com.icfolson.aem.prosper.specs.ProsperSpec
 
+@ModelSpec
 class BreadcrumbSpec extends ProsperSpec {
 
     def setupSpec() {
         slingContext.registerInjector(new ComponentInjector(), Integer.MAX_VALUE)
-        slingContext.addModelsForPackage(this.class.package.name)
 
         pageBuilder.content {
             demo("Demo") {

@@ -236,6 +236,7 @@
         <dependency>
             <groupId>com.icfolson.aem.prosper</groupId>
             <artifactId>prosper</artifactId>
+            <version>8.1.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
