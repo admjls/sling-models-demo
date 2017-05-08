@@ -1,0 +1,1 @@
+<%@include file="/apps/sling-models-demo/components/global.jsp" %>

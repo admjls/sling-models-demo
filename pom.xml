@@ -6,46 +6,30 @@
     <parent>
         <groupId>com.icfolson.aem.library</groupId>
         <artifactId>aem-library</artifactId>
-        <version>7.0.1</version>
+        <version>9.0.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.icfolson.aem.circuit.models</groupId>
-    <artifactId>circuit-sling-models</artifactId>
+    <groupId>com.icfolson.sling.models</groupId>
+    <artifactId>sling-models-demo</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>CIRCUIT Sling Models Demo</name>
 
     <modules>
-        <module>circuit-sling-models-core</module>
-        <module>circuit-sling-models-ui</module>
+        <module>sling-models-demo-core</module>
+        <module>sling-models-demo-ui</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>citytech-public</id>
-            <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>citytech-public</id>
-            <url>http://nexus.citytech.ctmsp.com/content/groups/public</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>citytech-private</id>
-            <url>http://nexus.citytech.ctmsp.com/content/groups/CITYTECH-Private/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
-        <core.artifactId>circuit-sling-models-core</core.artifactId>
+        <core.artifactId>sling-models-demo-core</core.artifactId>
 
         <!-- versions -->
-        <aem.library.version>7.0.1</aem.library.version>
-        <multicompositeaddon.version>2.1.2</multicompositeaddon.version>
-        <component.plugin.version>4.0.0</component.plugin.version>
+        <aem.library.version>9.0.0</aem.library.version>
+        <multicompositeaddon.version>3.1.0</multicompositeaddon.version>
+        <component.plugin.version>4.3.0</component.plugin.version>
+        <package.plugin.version>0.6.0</package.plugin.version>
+        <osgi.bundle.status.plugin.version>2.0.2</osgi.bundle.status.plugin.version>
 
         <!-- defaults -->
         <package.skip>true</package.skip>
@@ -119,7 +103,7 @@
                 <type>zip</type>
             </dependency>
             <dependency>
-                <groupId>com.citytechinc.aem</groupId>
+                <groupId>com.icfolson.aem</groupId>
                 <artifactId>multicomposite-addon</artifactId>
                 <version>${multicompositeaddon.version}</version>
             </dependency>

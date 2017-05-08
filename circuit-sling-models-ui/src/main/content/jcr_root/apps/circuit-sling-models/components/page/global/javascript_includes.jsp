@@ -1,1 +1,0 @@
-<%@include file="/apps/circuit-sling-models/components/global.jsp" %>
