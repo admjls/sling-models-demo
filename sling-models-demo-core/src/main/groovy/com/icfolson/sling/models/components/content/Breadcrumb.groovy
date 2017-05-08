@@ -2,6 +2,7 @@ package com.icfolson.sling.models.components.content
 
 import com.citytechinc.cq.component.annotations.Component
 import com.day.cq.wcm.api.Page
+import com.icfolson.aem.library.api.page.PageDecorator
 import org.apache.sling.api.SlingHttpServletRequest
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
@@ -15,7 +16,7 @@ import static com.icfolson.aem.library.core.constants.ComponentConstants.GROUP_H
 class Breadcrumb {
 
     @Inject
-    Page currentPage
+    PageDecorator currentPage
 
     List<Page> getPages() {
         def pages = []

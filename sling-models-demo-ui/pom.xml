@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sling-models-demo-ui</artifactId>
     <packaging>jar</packaging>
-    <name>CIRCUIT Sling Models Demo UI</name>
+    <name>Sling Models Demo UI</name>
 
     <properties>
         <maven.test.skip>true</maven.test.skip>
@@ -110,9 +110,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.citytechinc.maven.plugins</groupId>
-                <artifactId>cq-package-maven-plugin</artifactId>
-                <version>0.4.0</version>
+                <groupId>com.icfolson.maven.plugins</groupId>
+                <artifactId>aem-package-maven-plugin</artifactId>
+                <version>${package.plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>install</phase>
@@ -131,8 +131,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.citytechinc.maven.plugins</groupId>
+                <groupId>com.icfolson.maven.plugins</groupId>
                 <artifactId>osgi-bundle-status-maven-plugin</artifactId>
+                <version>${osgi.bundle.status.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>status-author</id>
@@ -161,7 +162,7 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.citytechinc.aem</groupId>
+            <groupId>com.icfolson.aem</groupId>
             <artifactId>multicomposite-addon</artifactId>
             <version>${multicompositeaddon.version}</version>
             <type>zip</type>

@@ -7,7 +7,7 @@ import org.apache.felix.scr.annotations.Service
 
 import java.util.concurrent.ThreadLocalRandom
 
-@Component
+@Component(immediate = true)
 @Service(AudienceStatusService)
 class RandomAudienceStatusService implements AudienceStatusService {
 

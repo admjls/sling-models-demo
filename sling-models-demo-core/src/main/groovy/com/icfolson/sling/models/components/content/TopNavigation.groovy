@@ -3,6 +3,7 @@ package com.icfolson.sling.models.components.content
 import com.citytechinc.cq.component.annotations.Component
 import com.day.cq.wcm.api.Page
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.icfolson.aem.library.api.page.PageDecorator
 import org.apache.sling.api.SlingHttpServletRequest
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
@@ -17,7 +18,7 @@ class TopNavigation {
 
     @Inject
     @JsonIgnore
-    Page currentPage
+    PageDecorator currentPage
 
     @JsonIgnore
     Page getBrandPage() {
