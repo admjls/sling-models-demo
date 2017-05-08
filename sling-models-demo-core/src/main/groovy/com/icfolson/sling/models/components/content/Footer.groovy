@@ -8,8 +8,8 @@ import com.google.common.base.Objects
 import com.icfolson.sling.models.annotations.Inherit
 import com.icfolson.sling.models.services.AudienceStatusService
 import org.apache.sling.api.resource.Resource
+import org.apache.sling.models.annotations.Exporter
 import org.apache.sling.models.annotations.Model
-import org.apache.sling.models.annotations.Optional
 
 import javax.inject.Inject
 import java.time.LocalDate
@@ -21,16 +21,21 @@ import static com.icfolson.aem.library.core.constants.ComponentConstants.REFRESH
 @Component(value = "Footer", group = GROUP_HIDDEN, listeners = [
     @Listener(name = EVENT_AFTER_EDIT, value = REFRESH_PAGE)
 ])
-@Model(adaptables = Resource)
+@Model(adaptables = Resource, resourceType = Footer.RESOURCE_TYPE)
+@Exporter(name = "jackson", extensions = "json")
 class Footer {
+
+    public static final String RESOURCE_TYPE = "sling-models-demo/components/content/footer"
 
     @Inject
     private AudienceStatusService audienceStatusService
 
     @DialogField(fieldLabel = "Copyright Text", required = true)
     @TextField
+    // @Inject
     @Inherit
-    @Optional
+    // @Optional
+    // @Default(values = "")
     String copyright
 
     String getAudienceStatus() {

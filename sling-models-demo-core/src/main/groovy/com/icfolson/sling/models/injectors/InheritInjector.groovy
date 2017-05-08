@@ -2,9 +2,6 @@ package com.icfolson.sling.models.injectors
 
 import com.day.cq.commons.inherit.HierarchyNodeInheritanceValueMap
 import com.icfolson.sling.models.annotations.Inherit
-import org.apache.felix.scr.annotations.Component
-import org.apache.felix.scr.annotations.Property
-import org.apache.felix.scr.annotations.Service
 import org.apache.sling.api.SlingHttpServletRequest
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.spi.DisposalCallbackRegistry
@@ -12,14 +9,14 @@ import org.apache.sling.models.spi.Injector
 import org.apache.sling.models.spi.injectorspecific.AbstractInjectAnnotationProcessor2
 import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor2
 import org.apache.sling.models.spi.injectorspecific.StaticInjectAnnotationProcessorFactory
-import org.osgi.framework.Constants
+import org.osgi.service.component.annotations.Component
 
 import java.lang.reflect.AnnotatedElement
 import java.lang.reflect.Type
 
-@Component
-@Service(Injector)
-@Property(name = Constants.SERVICE_RANKING, intValue = 5000)
+@Component(service = Injector, property = [
+    "service.ranking:Integer=5000"
+])
 class InheritInjector implements StaticInjectAnnotationProcessorFactory, Injector {
 
     @Override

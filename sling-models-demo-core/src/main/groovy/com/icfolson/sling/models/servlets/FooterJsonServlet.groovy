@@ -10,8 +10,7 @@ import org.apache.sling.api.servlets.SlingSafeMethodsServlet
 
 import javax.servlet.ServletException
 
-@SlingServlet(resourceTypes = "sling-models-demo/components/content/footer", methods = "GET",
-    selectors = "properties", extensions = "json")
+@SlingServlet(resourceTypes = Footer.RESOURCE_TYPE, methods = "GET", selectors = "properties", extensions = "json")
 class FooterJsonServlet extends SlingSafeMethodsServlet {
 
     @Override
@@ -21,6 +20,11 @@ class FooterJsonServlet extends SlingSafeMethodsServlet {
 
         def footer = request.resource.adaptTo(Footer)
 
-        new JsonBuilder(footer).writeTo(response.writer)
+        def json = [
+            copyright: footer.copyright,
+            year: footer.year
+        ]
+
+        new JsonBuilder(json).writeTo(response.writer)
     }
 }

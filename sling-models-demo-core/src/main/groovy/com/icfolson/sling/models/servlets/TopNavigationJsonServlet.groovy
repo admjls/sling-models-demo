@@ -2,6 +2,7 @@ package com.icfolson.sling.models.servlets
 
 import com.day.cq.wcm.api.NameConstants
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.common.net.MediaType
 import com.icfolson.sling.models.components.content.TopNavigation
 import org.apache.felix.scr.annotations.sling.SlingServlet
 import org.apache.sling.api.SlingHttpServletRequest
@@ -18,10 +19,8 @@ class TopNavigationJsonServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws
         ServletException, IOException {
-        def topNavigation = request.adaptTo(TopNavigation)
+        response.setContentType(MediaType.JSON_UTF_8.withoutParameters().toString())
 
-        response.setContentType("application/json")
-
-        MAPPER.writeValue(response.outputStream, topNavigation)
+        MAPPER.writeValue(response.outputStream, request.adaptTo(TopNavigation))
     }
 }

@@ -2,13 +2,11 @@ package com.icfolson.sling.models.services.impl
 
 import com.icfolson.sling.models.enums.AudienceStatus
 import com.icfolson.sling.models.services.AudienceStatusService
-import org.apache.felix.scr.annotations.Component
-import org.apache.felix.scr.annotations.Service
+import org.osgi.service.component.annotations.Component
 
 import java.util.concurrent.ThreadLocalRandom
 
-@Component(immediate = true)
-@Service(AudienceStatusService)
+@Component(service = AudienceStatusService, immediate = true)
 class RandomAudienceStatusService implements AudienceStatusService {
 
     @Override

@@ -3,16 +3,13 @@ package com.icfolson.sling.models.injectors
 import com.day.cq.wcm.api.Page
 import com.day.cq.wcm.api.PageManager
 import groovy.util.logging.Slf4j
-import org.apache.felix.scr.annotations.Component
-import org.apache.felix.scr.annotations.Property
-import org.apache.felix.scr.annotations.Service
 import org.apache.sling.api.SlingHttpServletRequest
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.api.resource.ResourceResolver
 import org.apache.sling.api.resource.ValueMap
 import org.apache.sling.models.spi.DisposalCallbackRegistry
 import org.apache.sling.models.spi.Injector
-import org.osgi.framework.Constants
+import org.osgi.service.component.annotations.Component
 
 import javax.jcr.Node
 import javax.jcr.Session
@@ -22,9 +19,9 @@ import java.lang.reflect.Type
 /**
  * Injector for objects derived from the current component context.
  */
-@Component
-@Service(Injector)
-@Property(name = Constants.SERVICE_RANKING, intValue = Integer.MAX_VALUE)
+@Component(service = Injector, property = [
+    "service.ranking:Integer=5000"
+])
 @Slf4j("LOG")
 class ComponentInjector implements Injector {
 
