@@ -1,7 +1,7 @@
 <hr>
 
 <footer data-sly-use.footer="com.icfolson.sling.models.components.content.Footer">
-    <div class="row">
+    <div class="row" data-sly-test="${footer.homePage}">
         <div class="col-lg-12">
             <div class="alert alert-info" role="alert">
                 Audience is currently <strong>${footer.audienceStatus}</strong>

@@ -10,6 +10,7 @@ import com.icfolson.sling.models.services.AudienceStatusService
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Exporter
 import org.apache.sling.models.annotations.Model
+import org.apache.sling.models.annotations.injectorspecific.Self
 
 import javax.inject.Inject
 import java.time.LocalDate
@@ -29,6 +30,10 @@ class Footer {
 
     @Inject
     private AudienceStatusService audienceStatusService
+
+    @Self
+    @Delegate
+    private SiteContext siteContext
 
     @DialogField(fieldLabel = "Copyright Text", required = true)
     @TextField
