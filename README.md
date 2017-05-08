@@ -1,3 +1,3 @@
-# CIRCUIT Sling Models Demo
+# Sling Models Demo
 
 [ICF Olson](http://www.icfolson.com)
