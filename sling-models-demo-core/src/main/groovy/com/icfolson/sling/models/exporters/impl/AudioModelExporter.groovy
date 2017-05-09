@@ -11,7 +11,7 @@ import com.amazonaws.services.polly.model.OutputFormat
 import com.amazonaws.services.polly.model.SynthesizeSpeechRequest
 import com.amazonaws.services.polly.model.Voice
 import com.icfolson.sling.models.components.content.AudioExportable
-import com.icfolson.sling.models.exporters.AudioDescriptionExporter
+import com.icfolson.sling.models.exporters.AudioExporter
 import groovy.transform.Synchronized
 import org.apache.sling.models.export.spi.ModelExporter
 import org.apache.sling.models.factory.ExportException
@@ -20,9 +20,9 @@ import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Modified
 import org.osgi.service.metatype.annotations.Designate
 
-@Component(service = [ModelExporter, AudioDescriptionExporter])
-@Designate(ocd = AudioDescriptionModelExporterConfiguration)
-class AudioDescriptionModelExporter implements ModelExporter, AudioDescriptionExporter {
+@Component(service = [ModelExporter, AudioExporter])
+@Designate(ocd = AudioModelExporterConfiguration)
+class AudioModelExporter implements ModelExporter, AudioExporter {
 
     private AmazonPolly polly
 
@@ -70,7 +70,7 @@ class AudioDescriptionModelExporter implements ModelExporter, AudioDescriptionEx
     @Activate
     @Modified
     @Synchronized
-    void modified(AudioDescriptionModelExporterConfiguration configuration) {
+    void modified(AudioModelExporterConfiguration configuration) {
         def credentials = new BasicAWSCredentials(configuration.accessKey(), configuration.secretKey())
 
         polly = AmazonPollyClientBuilder.standard()

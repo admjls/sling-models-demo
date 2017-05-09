@@ -2,8 +2,7 @@ package com.icfolson.sling.models.servlets
 
 import com.google.common.io.ByteStreams
 import com.google.common.net.MediaType
-import com.icfolson.sling.models.exporters.AudioDescriptionExporter
-import groovy.util.logging.Slf4j
+import com.icfolson.sling.models.exporters.AudioExporter
 import org.apache.felix.scr.annotations.Reference
 import org.apache.felix.scr.annotations.sling.SlingServlet
 import org.apache.sling.api.SlingHttpServletRequest
@@ -13,9 +12,8 @@ import org.apache.sling.models.factory.ModelFactory
 
 import javax.servlet.ServletException
 
-@SlingServlet(resourceTypes = "sling/servlet/default", methods = "GET", selectors = "description", extensions = "mp3")
-@Slf4j("LOG")
-class AudioDescriptionModelExporterServlet extends SlingSafeMethodsServlet {
+@SlingServlet(resourceTypes = "sling/servlet/default", methods = "GET", selectors = "audio", extensions = "mp3")
+class AudioModelExporterServlet extends SlingSafeMethodsServlet {
 
     @Reference
     private ModelFactory modelFactory
@@ -25,7 +23,7 @@ class AudioDescriptionModelExporterServlet extends SlingSafeMethodsServlet {
         SlingHttpServletResponse response) throws ServletException, IOException {
         def model = modelFactory.getModelFromResource(request.resource)
 
-        def audioStream = modelFactory.exportModel(model, AudioDescriptionExporter.NAME, InputStream,
+        def audioStream = modelFactory.exportModel(model, AudioExporter.NAME, InputStream,
             getOptions(request))
 
         response.contentType = MediaType.MPEG_AUDIO.withoutParameters().toString()
@@ -43,7 +41,7 @@ class AudioDescriptionModelExporterServlet extends SlingSafeMethodsServlet {
         def options = [:]
 
         if (selectors.length > 1) {
-            options[AudioDescriptionExporter.VOICE_ID] = selectors[1]
+            options[AudioExporter.VOICE_ID] = selectors[1]
         }
 
         options

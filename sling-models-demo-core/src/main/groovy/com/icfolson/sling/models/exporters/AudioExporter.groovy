@@ -2,9 +2,9 @@ package com.icfolson.sling.models.exporters
 
 import com.amazonaws.services.polly.model.Voice
 
-interface AudioDescriptionExporter {
+interface AudioExporter {
 
-    String NAME = "audio-description"
+    String NAME = "audio"
 
     String VOICE_ID = "voiceId"
 

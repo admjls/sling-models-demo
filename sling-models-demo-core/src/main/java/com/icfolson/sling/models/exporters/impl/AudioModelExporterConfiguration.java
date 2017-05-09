@@ -6,9 +6,9 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@ObjectClassDefinition(name = "Audio Description Model Exporter Configuration")
+@ObjectClassDefinition(name = "Audio Model Exporter Configuration")
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AudioDescriptionModelExporterConfiguration {
+public @interface AudioModelExporterConfiguration {
 
     @AttributeDefinition(name = "Access Key")
     String accessKey() default "";
