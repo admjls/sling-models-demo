@@ -163,6 +163,18 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>software.amazon.ion</groupId>
+            <artifactId>ion-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-cbor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-osgi</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.icfolson.aem</groupId>
             <artifactId>multicomposite-addon</artifactId>
             <version>${multicompositeaddon.version}</version>

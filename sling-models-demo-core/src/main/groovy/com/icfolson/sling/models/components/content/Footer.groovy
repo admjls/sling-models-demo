@@ -1,15 +1,12 @@
 package com.icfolson.sling.models.components.content
 
-import com.citytechinc.cq.component.annotations.Component
 import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.Listener
 import com.citytechinc.cq.component.annotations.widgets.TextField
 import com.google.common.base.Objects
+import com.icfolson.sling.models.annotations.ExportableComponent
 import com.icfolson.sling.models.annotations.Inherit
 import com.icfolson.sling.models.services.AudienceStatusService
-import org.apache.sling.api.resource.Resource
-import org.apache.sling.models.annotations.Exporter
-import org.apache.sling.models.annotations.Model
 import org.apache.sling.models.annotations.injectorspecific.Self
 
 import javax.inject.Inject
@@ -19,12 +16,13 @@ import static com.icfolson.aem.library.core.constants.ComponentConstants.EVENT_A
 import static com.icfolson.aem.library.core.constants.ComponentConstants.GROUP_HIDDEN
 import static com.icfolson.aem.library.core.constants.ComponentConstants.REFRESH_PAGE
 
-@Component(value = "Footer", group = GROUP_HIDDEN, listeners = [
-    @Listener(name = EVENT_AFTER_EDIT, value = REFRESH_PAGE)
-])
-@Model(adaptables = Resource, resourceType = Footer.RESOURCE_TYPE)
-@Exporter(name = "audio-description", extensions = "mp3")
-class Footer implements Describable {
+@ExportableComponent(value = "Footer",
+    group = GROUP_HIDDEN,
+    resourceType = Footer.RESOURCE_TYPE,
+    listeners = [
+        @Listener(name = EVENT_AFTER_EDIT, value = REFRESH_PAGE)
+    ])
+class Footer implements AudioExportable {
 
     public static final String RESOURCE_TYPE = "sling-models-demo/components/content/footer"
 
@@ -61,7 +59,7 @@ class Footer implements Describable {
     }
 
     @Override
-    String getDescription() {
-        "the footer is at the bottom of every page"
+    String getText() {
+        "the footer component is at the bottom of every page"
     }
 }

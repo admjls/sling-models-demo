@@ -1,6 +1,6 @@
 package com.icfolson.sling.models.components.content
 
-interface Describable {
+interface AudioExportable {
 
-    String getDescription()
+    String getText()
 }

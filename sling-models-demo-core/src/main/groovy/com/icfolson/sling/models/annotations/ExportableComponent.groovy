@@ -1,15 +1,15 @@
 package com.icfolson.sling.models.annotations
 
+import com.citytechinc.cq.component.annotations.Component
 import groovy.transform.AnnotationCollector
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Exporter
 import org.apache.sling.models.annotations.Model
 
-import static org.apache.sling.models.annotations.DefaultInjectionStrategy.OPTIONAL
-
-@Model(adaptables = Resource, defaultInjectionStrategy = OPTIONAL)
-@Exporter(name = "jackson", extensions = "json")
+@Component(group = "Sling Models Demo")
+@Model(adaptables = Resource)
+@Exporter(name = "audio-description", extensions = "mp3")
 @AnnotationCollector
-@interface DemoComponent {
+@interface ExportableComponent {
 
 }

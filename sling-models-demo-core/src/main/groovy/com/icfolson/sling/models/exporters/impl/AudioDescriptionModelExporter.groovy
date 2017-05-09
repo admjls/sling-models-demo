@@ -6,12 +6,12 @@ import com.amazonaws.regions.Regions
 import com.amazonaws.services.polly.AmazonPolly
 import com.amazonaws.services.polly.AmazonPollyClientBuilder
 import com.amazonaws.services.polly.model.DescribeVoicesRequest
+import com.amazonaws.services.polly.model.LanguageCode
 import com.amazonaws.services.polly.model.OutputFormat
 import com.amazonaws.services.polly.model.SynthesizeSpeechRequest
 import com.amazonaws.services.polly.model.Voice
-import com.google.common.base.Charsets
-import com.google.common.io.ByteStreams
-import com.icfolson.sling.models.components.content.Describable
+import com.icfolson.sling.models.components.content.AudioExportable
+import com.icfolson.sling.models.exporters.AudioDescriptionExporter
 import groovy.transform.Synchronized
 import org.apache.sling.models.export.spi.ModelExporter
 import org.apache.sling.models.factory.ExportException
@@ -20,40 +20,51 @@ import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Modified
 import org.osgi.service.metatype.annotations.Designate
 
-@Component(service = ModelExporter)
+@Component(service = [ModelExporter, AudioDescriptionExporter])
 @Designate(ocd = AudioDescriptionModelExporterConfiguration)
-class AudioDescriptionModelExporter implements ModelExporter {
+class AudioDescriptionModelExporter implements ModelExporter, AudioDescriptionExporter {
 
     private AmazonPolly polly
 
-    private Voice voice
+    private Voice defaultVoice
+
+    @Override
+    List<Voice> getVoices() {
+        polly.describeVoices(new DescribeVoicesRequest()
+            .withLanguageCode(LanguageCode.EnUS))
+            .voices
+    }
 
     @Override
     boolean isSupported(Class<?> clazz) {
-        clazz == InputStream || clazz == String
+        clazz == InputStream
     }
 
     @Override
     <T> T export(Object model, Class<T> clazz, Map<String, String> options) throws ExportException {
-        def request = new SynthesizeSpeechRequest().withVoiceId(voice.id)
-            .withOutputFormat(OutputFormat.Mp3)
+        def text
 
-        if (model instanceof Describable) {
-            def describable = model as Describable
+        if (model instanceof AudioExportable) {
+            def exportable = model as AudioExportable
 
-            request.setText(describable.description)
+            text = exportable.text
         } else {
-            request.setText("model has no description")
+            text = "model has no exportable text"
         }
 
-        def stream = polly.synthesizeSpeech(request).audioStream
+        def voiceId = options[VOICE_ID] ?: defaultVoice.id
 
-        (clazz == String ? new String(ByteStreams.toByteArray(stream), Charsets.UTF_8) : stream) as T
+        def request = new SynthesizeSpeechRequest()
+            .withVoiceId(voiceId)
+            .withOutputFormat(OutputFormat.Mp3)
+            .withText(text)
+
+        polly.synthesizeSpeech(request).audioStream as T
     }
 
     @Override
     String getName() {
-        "audio-description"
+        NAME
     }
 
     @Activate
@@ -67,9 +78,6 @@ class AudioDescriptionModelExporter implements ModelExporter {
             .withCredentials(new AWSStaticCredentialsProvider(credentials))
             .build()
 
-        def describeVoicesRequest = new DescribeVoicesRequest()
-        def describeVoicesResult = polly.describeVoices(describeVoicesRequest)
-
-        voice = describeVoicesResult.voices[0]
+        defaultVoice = voices[0]
     }
 }

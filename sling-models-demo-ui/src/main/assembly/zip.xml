@@ -50,6 +50,9 @@
             <scope>compile</scope>
             <includes>
                 <include>com.icfolson.sling.models:sling-models-demo-core</include>
+                <include>software.amazon.ion:ion-java</include>
+                <include>com.amazonaws:aws-java-sdk-osgi</include>
+                <include>com.fasterxml.jackson.dataformat:jackson-dataformat-cbor</include>
             </includes>
             <useStrictFiltering>true</useStrictFiltering>
         </dependencySet>

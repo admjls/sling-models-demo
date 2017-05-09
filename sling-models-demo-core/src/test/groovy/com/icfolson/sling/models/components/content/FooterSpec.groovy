@@ -1,10 +1,11 @@
 package com.icfolson.sling.models.components.content
 
-import com.icfolson.sling.models.enums.AudienceStatus
-import com.icfolson.sling.models.services.AudienceStatusService
 import com.icfolson.aem.prosper.annotations.ModelSpec
 import com.icfolson.aem.prosper.specs.ProsperSpec
+import com.icfolson.sling.models.enums.AudienceStatus
+import com.icfolson.sling.models.injectors.ComponentInjector
 import com.icfolson.sling.models.injectors.InheritInjector
+import com.icfolson.sling.models.services.AudienceStatusService
 import org.apache.sling.models.factory.MissingElementsException
 import org.apache.sling.models.factory.ModelFactory
 import spock.lang.Unroll
@@ -14,6 +15,7 @@ import spock.lang.Unroll
 class FooterSpec extends ProsperSpec {
 
     def setupSpec() {
+        slingContext.registerInjector(new ComponentInjector(), Integer.MAX_VALUE)
         slingContext.registerInjector(new InheritInjector(), Integer.MAX_VALUE)
         slingContext.registerService(AudienceStatusService, new AudienceStatusService() {
 
