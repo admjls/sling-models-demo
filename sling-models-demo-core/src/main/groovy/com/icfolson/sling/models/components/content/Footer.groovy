@@ -23,8 +23,8 @@ import static com.icfolson.aem.library.core.constants.ComponentConstants.REFRESH
     @Listener(name = EVENT_AFTER_EDIT, value = REFRESH_PAGE)
 ])
 @Model(adaptables = Resource, resourceType = Footer.RESOURCE_TYPE)
-@Exporter(name = "jackson", extensions = "json")
-class Footer {
+@Exporter(name = "audio-description", extensions = "mp3")
+class Footer implements Describable {
 
     public static final String RESOURCE_TYPE = "sling-models-demo/components/content/footer"
 
@@ -58,5 +58,10 @@ class Footer {
             .add("year", year)
             .add("audienceStatus", audienceStatus)
             .toString()
+    }
+
+    @Override
+    String getDescription() {
+        "the footer is at the bottom of every page"
     }
 }
