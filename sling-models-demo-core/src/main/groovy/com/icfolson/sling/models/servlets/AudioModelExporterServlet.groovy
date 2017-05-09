@@ -21,9 +21,7 @@ class AudioModelExporterServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request,
         SlingHttpServletResponse response) throws ServletException, IOException {
-        def model = modelFactory.getModelFromResource(request.resource)
-
-        def audioStream = modelFactory.exportModel(model, AudioExporter.NAME, InputStream,
+        def audioStream = modelFactory.exportModelForResource(request.resource, AudioExporter.NAME, InputStream,
             getOptions(request))
 
         response.contentType = MediaType.MPEG_AUDIO.withoutParameters().toString()
