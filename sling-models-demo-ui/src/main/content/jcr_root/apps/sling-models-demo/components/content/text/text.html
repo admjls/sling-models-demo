@@ -1,5 +1,19 @@
 <sly data-sly-use.text="com.icfolson.sling.models.components.content.Text">
     <div data-sly-test="${wcmmode.edit && !text.text}" class="cq-placeholder" data-emptytext="Text"></div>
 
-    <p>${text.text}</p>
+    <p data-sly-test="${text.text}">${text.text}</p>
+
+    <div class="row" data-sly-test="${text.text}">
+        <div class="col-xs-3">
+            <select id="voice" class="form-control">
+                <option disabled selected>Voice</option>
+                <option data-sly-repeat.voice="${text.voices}" value="${voice.id}">${voice.name}</option>
+            </select>
+        </div>
+        <div class="col-xs-9">
+            <audio controls>
+                <source id="voice-source" data-resource="${resource.path}" src="${resource.path}.audio.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
 </sly>
