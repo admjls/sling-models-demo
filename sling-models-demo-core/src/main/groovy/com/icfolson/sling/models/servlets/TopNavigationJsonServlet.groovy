@@ -19,7 +19,7 @@ class TopNavigationJsonServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws
         ServletException, IOException {
-        response.setContentType(MediaType.JSON_UTF_8.withoutParameters().toString())
+        response.contentType = MediaType.JSON_UTF_8.withoutParameters().toString()
 
         MAPPER.writeValue(response.outputStream, request.adaptTo(TopNavigation))
     }
