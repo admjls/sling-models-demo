@@ -42,14 +42,12 @@ class AudioModelExporter implements ModelExporter, AudioExporter {
 
     @Override
     <T> T export(Object model, Class<T> clazz, Map<String, String> options) throws ExportException {
-        def text
+        def text = ""
 
         if (model instanceof AudioExportable) {
             def exportable = model as AudioExportable
 
             text = exportable.text
-        } else {
-            text = "model has no exportable text"
         }
 
         def voiceId = options[VOICE_ID] ?: defaultVoice.id
