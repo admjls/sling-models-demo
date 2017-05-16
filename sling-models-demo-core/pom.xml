@@ -131,15 +131,12 @@
             <artifactId>cq-component-annotations</artifactId>
             <version>${component.plugin.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.icfolson.aem</groupId>
-            <artifactId>multicomposite-addon</artifactId>
-        </dependency>
 
         <!-- test -->
         <dependency>
             <groupId>com.icfolson.aem.library</groupId>
             <artifactId>aem-library-models</artifactId>
+            <version>${aem.library.version}</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>

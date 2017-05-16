@@ -175,12 +175,6 @@
             <artifactId>aws-java-sdk-osgi</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.icfolson.aem</groupId>
-            <artifactId>multicomposite-addon</artifactId>
-            <version>${multicompositeaddon.version}</version>
-            <type>zip</type>
-        </dependency>
-        <dependency>
             <groupId>com.icfolson.aem.library</groupId>
             <artifactId>aem-library-ui</artifactId>
             <type>zip</type>

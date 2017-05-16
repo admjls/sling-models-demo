@@ -26,7 +26,6 @@
 
         <!-- versions -->
         <aem.library.version>9.0.0</aem.library.version>
-        <multicompositeaddon.version>3.1.0</multicompositeaddon.version>
         <component.plugin.version>4.3.0</component.plugin.version>
         <package.plugin.version>0.6.0</package.plugin.version>
         <osgi.bundle.status.plugin.version>2.0.2</osgi.bundle.status.plugin.version>
@@ -92,20 +91,9 @@
             </dependency>
             <dependency>
                 <groupId>com.icfolson.aem.library</groupId>
-                <artifactId>aem-library-models</artifactId>
-                <version>${aem.library.version}</version>
-                <classifier>tests</classifier>
-            </dependency>
-            <dependency>
-                <groupId>com.icfolson.aem.library</groupId>
                 <artifactId>aem-library-ui</artifactId>
                 <version>${aem.library.version}</version>
                 <type>zip</type>
-            </dependency>
-            <dependency>
-                <groupId>com.icfolson.aem</groupId>
-                <artifactId>multicomposite-addon</artifactId>
-                <version>${multicompositeaddon.version}</version>
             </dependency>
             <dependency>
                 <groupId>software.amazon.ion</groupId>
