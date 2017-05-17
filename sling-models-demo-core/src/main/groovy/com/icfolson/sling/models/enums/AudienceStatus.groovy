@@ -4,8 +4,10 @@ import groovy.transform.TupleConstructor
 
 @TupleConstructor
 enum AudienceStatus {
-    ASLEEP("asleep"),
-    AWAKE("awake")
+    ASLEEP("asleep", "alert-danger"),
+    AWAKE("awake", "alert-success")
 
     String displayName
+
+    String cssClass
 }

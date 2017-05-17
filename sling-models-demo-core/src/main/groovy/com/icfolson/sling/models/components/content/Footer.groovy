@@ -5,12 +5,14 @@ import com.citytechinc.cq.component.annotations.DialogField
 import com.citytechinc.cq.component.annotations.Listener
 import com.citytechinc.cq.component.annotations.widgets.TextField
 import com.google.common.base.Objects
+import com.icfolson.sling.models.enums.AudienceStatus
 import com.icfolson.sling.models.services.AudienceStatusService
 import org.apache.sling.api.resource.Resource
 import org.apache.sling.models.annotations.Model
 import org.apache.sling.models.annotations.Optional
 import org.apache.sling.models.annotations.injectorspecific.Self
 
+import javax.annotation.PostConstruct
 import javax.inject.Inject
 import java.time.LocalDate
 
@@ -42,8 +44,11 @@ class Footer {
     @Optional
     String copyright
 
-    String getAudienceStatus() {
-        audienceStatusService.audienceStatus.displayName
+    AudienceStatus audienceStatus
+
+    @PostConstruct
+    void init() {
+        audienceStatus = audienceStatusService.audienceStatus
     }
 
     String getYear() {

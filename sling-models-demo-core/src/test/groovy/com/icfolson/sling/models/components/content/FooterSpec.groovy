@@ -52,7 +52,7 @@ class FooterSpec extends ProsperSpec {
         def footer = getResource("/content/demo/jcr:content/footer").adaptTo(Footer)
 
         expect:
-        footer.audienceStatus == AudienceStatus.ASLEEP.displayName
+        footer.audienceStatus == AudienceStatus.ASLEEP
     }
 
     def "get copyright text"() {
